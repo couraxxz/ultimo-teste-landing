@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O ÚLTIMO TESTE — 300 questões inéditas no estilo ENEM</title>
+<meta name="description" content="300 questões inéditas no estilo ENEM com gabarito comentado. PDF para baixar e imprimir. Acesso imediato.">
+<meta name="robots" content="index, follow">
+
+<!-- META PIXEL AQUI -->
+<!-- Cole abaixo o código base do Pixel do Meta deste produto. Ele já vem com o
+     PageView. O evento InitiateCheckout é disparado no clique de qualquer CTA
+     pela função no rodapé desta página. -->
+
+<style>
+/* ============================================================
+   O ÚLTIMO TESTE — página de venda
+   Estética editorial: fundo branco, filetes, tipografia de sistema.
+   Não imita nenhum veículo real: não há logo, byline, data de matéria
+   nem selo de notícia. O topo identifica o produto, e a página se
+   apresenta como o que é, uma página de venda do material.
+   ============================================================ */
+:root{
+  --tinta:#111111;       /* texto principal */
+  --corpo:#333333;       /* corpo de texto */
+  --suave:#555555;       /* texto secundário */
+  --legenda:#777777;     /* legenda de imagem */
+  --filete:#e5e5e5;      /* separador de seção */
+  --borda:#e0e0e0;       /* borda de cartão */
+  --vermelho:#c0182b;    /* destaque editorial: 6,1:1 no branco */
+  --vermelho-fundo:#a11324;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font:400 17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
+       "Helvetica Neue",Arial,sans-serif;
+  color:var(--corpo);background:#fff;
+}
+.wrap{max-width:680px;margin:0 auto;padding:0 20px}
+section{position:relative;padding:40px 0;border-top:1px solid var(--filete)}
+/* divisor editorial: o filete de 1px com um traço de 64x3 centralizado por cima */
+section::before{
+  content:"";position:absolute;top:-2px;left:50%;transform:translateX(-50%);
+  width:64px;height:3px;background:var(--vermelho);
+}
+p{margin-bottom:18px}
+p:last-child{margin-bottom:0}
+strong,b{font-weight:700;color:var(--tinta)}
+
+/* ---------- chapéu editorial ---------- */
+.chapeu{
+  display:block;font-size:12px;font-weight:700;line-height:1.3;
+  letter-spacing:1px;text-transform:uppercase;color:var(--vermelho);
+  margin-bottom:10px;
+}
+
+/* ---------- cabeçalho: identifica o produto ---------- */
+/* Masthead de jornal: barra branca, filete vermelho no topo da página e o nome
+   em serifa. No Android a pilha cai na serifa do sistema, que é o esperado. */
+.marca{
+  position:sticky;top:0;z-index:20;
+  background:#fff;height:60px;
+  border-top:4px solid var(--vermelho);
+  border-bottom:1px solid var(--filete);
+  display:flex;align-items:center;justify-content:center;
+}
+.marca .nome{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:700;font-size:24px;line-height:1;letter-spacing:0;
+  text-transform:none;color:var(--tinta);text-align:center;white-space:nowrap;
+}
+
+/* ---------- primeira dobra ---------- */
+.topo{padding:34px 0 40px}
+h1{
+  font-size:30px;font-weight:800;line-height:1.15;letter-spacing:-.5px;
+  color:var(--tinta);
+}
+.topo .sub{font-size:19px;font-weight:400;line-height:1.5;color:#666;margin:18px 0 24px}
+.destaque{
+  border-left:3px solid var(--vermelho);padding-left:16px;
+  font-size:18px;font-weight:600;line-height:1.5;color:var(--tinta);margin:0;
+}
+
+/* realce editorial: só três na página inteira, para não virar poluição */
+.realce{color:var(--vermelho);font-weight:700}
+
+/* ---------- títulos de seção ---------- */
+h2{
+  font-size:22px;font-weight:700;line-height:1.25;letter-spacing:-.3px;
+  color:var(--tinta);margin-bottom:16px;
+}
+.subsecao{color:var(--suave);font-size:16.5px;margin-bottom:24px}
+
+/* ---------- CTA ---------- */
+.cta{
+  width:100%;background:var(--vermelho);color:#fff;text-decoration:none;
+  font-size:17px;font-weight:700;line-height:1.25;letter-spacing:.4px;
+  text-transform:uppercase;text-align:center;
+  min-height:54px;display:flex;align-items:center;justify-content:center;
+  padding:12px 16px;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.14);
+}
+.cta:active{background:var(--vermelho-fundo)}
+.selo{font-size:13.5px;color:var(--suave);text-align:center;margin:11px 0 0;line-height:1.5}
+.bloco-cta{margin-top:32px}
+
+/* ---------- foto editorial ----------
+   A foto e conteudo, nao fundo: entra no fluxo, com legenda embaixo.
+   width/height no <img> fixam a proporcao 3:2, entao a caixa nao pula quando a
+   imagem carrega — e, enquanto o arquivo nao existir, sobra um bloco cinza do
+   tamanho certo em vez de a pagina colapsar. */
+.foto{margin:24px 0 26px}
+.foto img{
+  display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;
+  border-radius:4px;background:#f2f2f2;
+}
+
+.legenda{font-size:15px;line-height:1.5;color:var(--legenda);margin:10px 0 0}
+
+/* ---------- lista do que vem no material ---------- */
+ul.entrega{list-style:none;margin:0}
+ul.entrega li{
+  position:relative;padding:0 0 15px 26px;font-size:16.5px;line-height:1.55;
+}
+ul.entrega li:last-child{padding-bottom:0}
+ul.entrega li::before{
+  content:"\2713";position:absolute;left:0;top:0;
+  color:var(--vermelho);font-size:15px;font-weight:700;line-height:1.7;
+}
+
+/* ---------- prova de trabalho: números com filete ---------- */
+.numeros{margin:4px 0 24px}
+.numeros div{
+  display:flex;gap:18px;align-items:baseline;
+  padding:16px 0;border-top:1px solid var(--filete);
+}
+.numeros div:last-child{border-bottom:1px solid var(--filete)}
+.numeros b{
+  flex:0 0 78px;font-size:38px;font-weight:800;line-height:1;letter-spacing:-1.5px;
+  color:var(--vermelho);
+}
+.numeros span{font-size:15px;line-height:1.45;color:var(--suave)}
+
+/* ---------- cartão de questão ----------
+   O corpo da questão fica em serifada, a mesma do PDF do material, para a
+   amostra parecer com a página que a pessoa vai receber. Georgia é fonte de
+   sistema: não gera requisição. */
+.questao{
+  background:#fff;border:1px solid var(--borda);border-radius:8px;
+  padding:20px 18px;margin-bottom:18px;
+  font:400 16px/1.55 Georgia,"Times New Roman",serif;color:var(--corpo);
+}
+.questao .base{margin-bottom:13px}
+.questao .enunciado{font-weight:700;color:var(--tinta);margin-bottom:13px}
+ol.alt{list-style:none;margin:0}
+ol.alt li{display:flex;gap:10px;align-items:flex-start;padding:4px 0;line-height:1.45}
+.letra{
+  flex:0 0 auto;width:22px;height:22px;border:1px solid var(--tinta);border-radius:50%;
+  font:700 12px/20px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
+       "Helvetica Neue",Arial,sans-serif;
+  color:var(--tinta);text-align:center;margin-top:1px;
+}
+
+/* ---------- blocos recolhíveis: amostra e FAQ (details nativo, sem JS) ---------- */
+details{border-top:1px solid var(--filete)}
+details summary{
+  list-style:none;cursor:pointer;position:relative;
+  padding:16px 34px 16px 0;font-size:16.5px;font-weight:700;line-height:1.45;
+  color:var(--tinta);
+}
+details summary::-webkit-details-marker{display:none}
+details summary::after{
+  content:"";position:absolute;right:6px;top:50%;width:8px;height:8px;
+  border:solid var(--suave);border-width:0 1.5px 1.5px 0;
+  transform:translateY(-70%) rotate(45deg);transition:transform .15s;
+}
+details[open] summary::after{transform:translateY(-20%) rotate(-135deg)}
+details summary:focus-visible{outline:2px solid var(--vermelho);outline-offset:2px}
+details > p{padding-bottom:18px;font-size:16.5px;line-height:1.6;color:var(--corpo)}
+
+.questao details.resposta{margin-top:16px;border-top:1px solid var(--borda)}
+.questao details.resposta summary{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
+              "Helvetica Neue",Arial,sans-serif;
+  color:var(--vermelho);font-size:15px;padding:15px 34px 15px 0;
+}
+.questao details.resposta summary::after{border-color:var(--vermelho)}
+.questao .conteudo{padding-bottom:4px}
+.questao .gab{
+  font:700 14px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
+       "Helvetica Neue",Arial,sans-serif;
+  color:var(--vermelho);margin-bottom:10px;letter-spacing:.4px;
+}
+.questao .conteudo p:last-child{font-size:15.5px;line-height:1.6}
+
+.faq details:last-of-type{border-bottom:1px solid var(--filete)}
+
+/* ---------- depoimentos ----------
+   O CSS fica aqui pronto e sem uso: a seção correspondente está comentada no
+   HTML, logo abaixo de "Por que funciona". Basta descomentar o bloco de lá
+   quando houver depoimento real; nada precisa ser mexido neste estilo. */
+.depoimentos .cartao{
+  border:1px solid var(--borda);border-radius:8px;
+  padding:18px 18px 20px;margin-bottom:14px;
+}
+.depoimentos .cartao:last-child{margin-bottom:0}
+.depoimentos .fala{font-size:16.5px;line-height:1.6;margin-bottom:13px}
+.depoimentos .quem{font-size:13.5px;color:var(--suave);line-height:1.45}
+.depoimentos .quem b{display:block;color:var(--tinta);font-size:14.5px;font-weight:700}
+
+/* ---------- rodapé ---------- */
+.rodape{
+  border-top:1px solid var(--filete);color:var(--suave);
+  font-size:12.5px;line-height:1.65;padding:26px 0 40px;
+}
+
+@media (min-width:700px){
+  h1{font-size:40px}
+  h2{font-size:26px}
+  section{padding:52px 0}
+  .topo{padding:44px 0 52px}
+  .cta{font-size:18px;min-height:58px}
+  .numeros b{flex-basis:92px;font-size:44px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== MARCA DO PRODUTO =====================
+     Identificação do produto, não de um veículo: sem logo, sem byline,
+     sem data de publicação e sem qualquer referência a portal existente. -->
+<header class="marca">
+  <div class="wrap">
+    <span class="nome">O Último Teste</span>
+  </div>
+</header>
+
+<!-- ===================== TOPO / PRIMEIRA DOBRA ===================== -->
+<div class="topo">
+  <div class="wrap">
+    <span class="chapeu">Restam poucos dias para o ENEM</span>
+    <h1>Chegue no dia da prova sabendo exatamente onde você acerta — e onde ainda erra.</h1>
+    <p class="sub">Restam poucos dias para o ENEM. Este é o material que te mostra, questão por
+      questão, o que ainda dá tempo de corrigir.</p>
+    <!-- FOTO 1 — primeira dobra, por isso sem loading="lazy".
+         Arquivo esperado: img/estudo-papel.jpg (1200x800, JPG). Enquanto ele
+         nao existir, aparece um bloco cinza na proporcao certa. -->
+    <figure class="foto">
+      <img src="img/estudo-papel.jpg" width="1200" height="800"
+           alt="Mãos marcando uma alternativa em uma prova de múltipla escolha impressa,
+                sobre uma mesa de madeira clara">
+      <figcaption class="legenda">Treinar no papel, no ritmo da prova &mdash; é onde o estudo
+        vira ponto.</figcaption>
+    </figure>
+
+    <p class="destaque">300 questões inéditas no estilo ENEM, com gabarito comentado, para você se
+      testar antes do dia que decide tudo.</p>
+  </div>
+</div>
+
+<!-- ===================== A DOR ===================== -->
+<section>
+  <div class="wrap">
+    <span class="chapeu">ENEM 2026</span>
+    <h2>Você conhece a matéria. Mas conhecer não é a mesma coisa que acertar na prova.</h2>
+    <p>Todo ano é a mesma história: gente que estudou o ano inteiro trava na hora H. Não porque não
+      sabe — mas porque nunca treinou <span class="realce">o que o ENEM realmente cobra</span>: ler um texto longo, interpretar
+      o que a questão quer, e não cair nas pegadinhas que derrubam quem tem pressa.</p>
+    <p>O ENEM não pergunta a fórmula. Ele esconde a fórmula dentro de uma situação e vê se você a
+      enxerga sob pressão. Isso só se treina resolvendo questão atrás de questão.</p>
+  </div>
+</section>
+
+<!-- ===================== A SOLUÇÃO ===================== -->
+<section>
+  <div class="wrap">
+    <span class="chapeu">O material</span>
+    <h2>O ÚLTIMO TESTE é o seu simulado de reta final: 300 questões inéditas para você se testar
+      antes que seja tarde.</h2>
+    <p>Não são resumos. Não são vídeos que você assiste no automático. São <span class="realce">300 questões</span> para você
+      sentar, fazer e descobrir onde está pronto — e onde ainda precisa apertar.</p>
+    <p>Cada questão foi construída no estilo real do ENEM: texto-base contextualizado, cinco
+      alternativas com as pegadinhas que o exame adora, e um gabarito que explica por que as outras
+      estão erradas.</p>
+
+    <!-- Mockup montado a partir de duas páginas reais do PDF do material: uma
+         questão com gráfico na frente e a abertura do gabarito comentado atrás. -->
+    <figure class="foto">
+      <img src="img/mockup.jpg" width="1200" height="800" loading="lazy"
+           alt="Duas páginas do caderno: uma questão de matemática com gráfico de barras e a
+                abertura do gabarito comentado, com a grade das 300 respostas">
+      <figcaption class="legenda">Uma página do caderno &mdash; texto-base, alternativas e
+        gabarito comentado ao final.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== COMO FOI FEITO (prova de trabalho) ===================== -->
+<section class="prova">
+  <div class="wrap">
+    <span class="chapeu">Como foi feito</span>
+    <h2>Como este material foi feito</h2>
+
+    <div class="numeros">
+      <div><b>300</b><span>questões inéditas, nenhuma copiada de prova oficial</span></div>
+      <div><b>101</b><span>questões de cálculo conferidas uma a uma por verificação
+        independente</span></div>
+      <div><b>140</b><span>páginas de material, pronto para imprimir</span></div>
+      <div><b>4</b><span>áreas do conhecimento, na mesma proporção da prova real</span></div>
+    </div>
+
+    <p>Cada questão de matemática, física e química deste material teve o resultado conferido por
+      cálculo independente antes de entrar no caderno — para que o gabarito que você usa para
+      estudar esteja certo. As 300 questões são autorais, escritas do zero no estilo do exame.</p>
+  </div>
+</section>
+
+<!-- ===================== AMOSTRA: 2 QUESTOES REAIS ===================== -->
+<!-- As duas questões abaixo são copiadas palavra por palavra do material.
+     Se elas mudarem lá, traga o texto de novo em vez de reescrever aqui. -->
+<section class="amostra">
+  <div class="wrap">
+    <span class="chapeu">Amostra</span>
+    <h2>Veja 2 questões, do jeito que você vai receber</h2>
+    <p class="subsecao">Estas são questões reais do material. Tente resolver antes de olhar a
+      resposta.</p>
+
+    <article class="questao">
+      <p class="chapeu">Questão de matemática</p>
+      <p class="base">Em janeiro, uma loja de eletrônicos aumentou em 20% o preço de um modelo de fone de ouvido. Como as vendas ficaram abaixo do esperado, em fevereiro a loja anunciou um desconto de 15% sobre o preço já reajustado. Um cliente que acompanhava o produto desde dezembro comparou o preço final de fevereiro com o de dezembro.</p>
+      <p class="enunciado">Em relação ao preço de dezembro, o preço de fevereiro ficou</p>
+      <ol class="alt">
+        <li><span class="letra">A</span><span>5% menor.</span></li>
+        <li><span class="letra">B</span><span>2% menor.</span></li>
+        <li><span class="letra">C</span><span>exatamente igual.</span></li>
+        <li><span class="letra">D</span><span>2% maior.</span></li>
+        <li><span class="letra">E</span><span>5% maior.</span></li>
+      </ol>
+      <details class="resposta">
+        <summary>Ver resposta comentada</summary>
+        <div class="conteudo">
+          <p class="gab">Resposta: D</p>
+          <p>Variações percentuais sucessivas se multiplicam, não se somam: 1,20 × 0,85 = 1,02, ou seja, aumento de 2%. Quem soma e subtrai as taxas (+20% − 15%) conclui erradamente que houve alta de 5% (alternativa E); quem inverte a ordem do raciocínio chega a 5% de queda (alternativa A).</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="questao">
+      <p class="chapeu">Questão de linguagens</p>
+      <p class="base">Dormir não é apenas desligar o corpo. Durante o sono, o cérebro reorganiza o que foi aprendido no dia, transferindo para a memória de longo prazo aquilo que considera relevante e descartando o resto. Estudos com estudantes mostram que quem dorme depois de estudar retém mais conteúdo do que quem passa a noite acordado revisando a mesma matéria. Virar a noite antes da prova, portanto, costuma render menos do que dormir sobre o que se estudou.</p>
+      <p class="enunciado">A conclusão apresentada na última frase do texto apoia-se na ideia de que</p>
+      <ol class="alt">
+        <li><span class="letra">A</span><span>o tempo total de estudo é irrelevante para o desempenho na prova.</span></li>
+        <li><span class="letra">B</span><span>o cérebro permanece completamente inativo durante o período de sono.</span></li>
+        <li><span class="letra">C</span><span>revisar a matéria à noite prejudica permanentemente a memória.</span></li>
+        <li><span class="letra">D</span><span>o sono participa ativamente da consolidação do que foi aprendido.</span></li>
+        <li><span class="letra">E</span><span>estudantes que dormem menos aprendem mais rapidamente.</span></li>
+      </ol>
+      <details class="resposta">
+        <summary>Ver resposta comentada</summary>
+        <div class="conteudo">
+          <p class="gab">Resposta: D</p>
+          <p>O texto atribui ao sono um papel ativo na transferência do aprendizado para a memória de longo prazo, e é esse papel que sustenta a conclusão. A alternativa B contraria a primeira frase, que nega o sono como simples desligamento; a alternativa A extrapola, pois o texto compara o que se faz depois de estudar, e não a quantidade de estudo.</p>
+        </div>
+      </details>
+    </article>
+
+    <div class="bloco-cta">
+      <a class="cta" href="#CHECKOUT" onclick="irParaCheckout()">
+        COMEÇAR MEU ÚLTIMO TESTE AGORA
+      </a>
+      <p class="selo">Acesso imediato após o pagamento &middot; Pix ou cartão</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== O QUE VOCÊ RECEBE ===================== -->
+<section>
+  <div class="wrap">
+    <span class="chapeu">Conteúdo</span>
+    <h2>O que você recebe</h2>
+    <ul class="entrega">
+      <li><b>75 questões de Linguagens</b> — interpretação, gramática no contexto, literatura,
+        variação linguística e inglês/espanhol</li>
+      <li><b>75 questões de Ciências Humanas</b> — geografia, história do Brasil, filosofia e
+        sociologia</li>
+      <li><b>75 questões de Ciências da Natureza</b> — biologia, química e física, com foco no que
+        mais aparece</li>
+      <li><b>75 questões de Matemática</b> — da básica à avançada, contextualizada como no exame</li>
+      <li><b>Gabarito comentado das 300</b> — cada resposta explicada, com a pegadinha de cada
+        alternativa errada</li>
+      <li><b>Distribuição fiel à prova real</b> — mesma proporção de áreas, dificuldade misturada
+        como no exame</li>
+      <li><b>PDF pronto para imprimir</b> — treine no papel, do jeito que você vai fazer no dia</li>
+    </ul>
+
+    <div class="bloco-cta">
+      <a class="cta" href="#CHECKOUT" onclick="irParaCheckout()">
+        COMEÇAR MEU ÚLTIMO TESTE AGORA
+      </a>
+      <p class="selo">Acesso imediato após o pagamento &middot; Pix ou cartão</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== POR QUE FUNCIONA ===================== -->
+<section class="metodo">
+  <div class="wrap">
+    <span class="chapeu">Estratégia</span>
+    <h2>A nota do ENEM premia quem acerta o que mais cai — não quem tenta saber tudo.</h2>
+    <p>O ENEM usa um sistema de correção que recompensa a consistência: acertar as fáceis e médias
+      com segurança vale mais do que gabaritar uma difícil e errar três bobas.</p>
+    <p>Por isso treinar questão é a estratégia mais inteligente da reta final — cada questão aqui é
+      uma chance de descobrir uma pegadinha antes dela te custar pontos, perceber o que você achava
+      que sabia, e ganhar velocidade e confiança.</p>
+    <p><strong>Você não precisa saber tudo. Precisa treinar <span class="realce">o que mais cai</span>.</strong></p>
+  </div>
+</section>
+
+<!-- ===================== DEPOIMENTOS (DESATIVADO) =====================
+
+     COMO ATIVAR
+     1. Apague a linha que abre este comentário (a que termina em "DESATIVADO")
+        e a linha que o fecha, logo depois do último cartão.
+     2. Preencha os três cartões com depoimentos REAIS: a frase que a pessoa
+        escreveu, o primeiro nome (ou nome e sobrenome, se ela autorizar) e o
+        curso que ela pretende. Guarde o print ou a mensagem original.
+     3. Se você só tiver um ou dois depoimentos, apague os cartões que sobrarem.
+        Dois cartões verdadeiros valem mais do que três com um inventado.
+
+     NÃO PREENCHA COM DEPOIMENTO INVENTADO. Nome fictício ou frase de aluno que
+     não existe é propaganda enganosa, e é o tipo de coisa que derruba conta de
+     anúncio. Enquanto não houver depoimento real, esta seção fica como está:
+     comentada e invisível na página.
+
+     O CSS desta seção já está pronto na folha de estilo (classe .depoimentos),
+     então descomentar é a única coisa necessária.
+
+<section class="depoimentos">
+  <div class="wrap">
+    <span class="chapeu">Depoimentos</span>
+    <h2>Quem já está usando</h2>
+
+    <div class="cartao">
+      <p class="fala">[texto do depoimento]</p>
+      <p class="quem"><b>[nome]</b>[curso pretendido]</p>
+    </div>
+
+    <div class="cartao">
+      <p class="fala">[texto do depoimento]</p>
+      <p class="quem"><b>[nome]</b>[curso pretendido]</p>
+    </div>
+
+    <div class="cartao">
+      <p class="fala">[texto do depoimento]</p>
+      <p class="quem"><b>[nome]</b>[curso pretendido]</p>
+    </div>
+  </div>
+</section>
+
+===================================================================== -->
+
+<!-- ===================== FAQ ===================== -->
+<section class="faq">
+  <div class="wrap">
+    <span class="chapeu">Dúvidas</span>
+    <h2>Perguntas frequentes</h2>
+
+    <details>
+      <summary>Como recebo o material?</summary>
+      <p>Assim que o pagamento é confirmado, você recebe o link de download por e-mail. É imediato &mdash; não tem espera nem envio pelos Correios.</p>
+    </details>
+
+    <details>
+      <summary>É PDF ou vídeo?</summary>
+      <p>É um PDF de 140 páginas. Você baixa, estuda no celular ou no computador, e pode imprimir se preferir treinar no papel &mdash; como vai ser no dia da prova.</p>
+    </details>
+
+    <details>
+      <summary>As questões são as mesmas das provas oficiais do ENEM?</summary>
+      <p>Não. As 300 questões são inéditas, escritas do zero no estilo do exame &mdash; texto-base contextualizado, cinco alternativas e as pegadinhas que o ENEM costuma cobrar. É treino novo, que você ainda não viu em lugar nenhum, com gabarito comentado em todas.</p>
+    </details>
+
+    <details>
+      <summary>Tem gabarito explicado ou só a resposta certa?</summary>
+      <p>Todas as 300 têm comentário. Além da alternativa correta, o comentário mostra qual erro leva a cada alternativa errada &mdash; que é onde você aprende a não cair na pegadinha na hora da prova.</p>
+    </details>
+
+    <details>
+      <summary>Serve para quem está começando do zero?</summary>
+      <p>Serve. A dificuldade é misturada como na prova real: tem questão fácil, média e difícil em todas as áreas. Quem está começando usa as fáceis e médias para ganhar base; quem já estuda há tempo usa as difíceis para afinar.</p>
+    </details>
+
+    <details>
+      <summary>Tenho pouco tempo até a prova. Dá para usar mesmo assim?</summary>
+      <p>Dá. O material é dividido por área, então você pode começar pela que mais precisa em vez de fazer na ordem. Cada questão resolvida já mostra o que você domina e o que ainda precisa revisar.</p>
+    </details>
+
+  </div>
+</section>
+
+<!-- ===================== URGÊNCIA + CTA FINAL ===================== -->
+<section class="final">
+  <div class="wrap">
+    <span class="chapeu">Reta final</span>
+    <h2>O ENEM não vai esperar você ficar pronto. Mas você ainda tem tempo de treinar.</h2>
+
+    <!-- FOTO 2 — abaixo da dobra, com loading="lazy".
+         Arquivo esperado: img/mesa-noite.jpg (1200x800, JPG). -->
+    <figure class="foto" style="margin:0 0 26px">
+      <img src="img/mesa-noite.jpg" width="1200" height="800" loading="lazy"
+           alt="Mesa de estudos junto à janela, com livros abertos, cadernos e uma luminária">
+      <figcaption class="legenda">Reta final: cada dia rende mais quando você sabe o que
+        treinar.</figcaption>
+    </figure>
+
+    <p>Cada dia que passa é uma questão a menos que você poderia ter feito. Comece agora, enquanto
+      ainda dá para cobrir o que falta.</p>
+    <p style="margin-bottom:26px"><strong>300 questões. Gabarito comentado.
+      Acesso imediato.</strong></p>
+
+    <!-- evento InitiateCheckout no clique do CTA -->
+    <a class="cta" href="#CHECKOUT" onclick="irParaCheckout()">
+      COMEÇAR MEU ÚLTIMO TESTE AGORA
+    </a>
+    <p class="selo">Acesso imediato após o pagamento &middot; Pix ou cartão</p>
+  </div>
+</section>
+
+<!-- ===================== RODAPÉ ===================== -->
+<footer class="rodape">
+  <div class="wrap">
+    O ÚLTIMO TESTE é um material autoral e independente de estudo. As 300 questões são inéditas,
+    elaboradas para prática. Este produto não possui vínculo, patrocínio ou aprovação do INEP ou do
+    MEC. “ENEM” é citado apenas como referência ao exame para o qual o material prepara.
+  </div>
+</footer>
+
+<script>
+// Dispara o InitiateCheckout no Pixel (se houver) e segue para o checkout.
+// O valor fica aqui só para a mensuração do anúncio — não aparece na página.
+function irParaCheckout() {
+  if (typeof fbq === "function") { fbq("track", "InitiateCheckout", {value: 27, currency: "BRL"}); }
+  return true;
+}
+</script>
+</body>
+</html>
