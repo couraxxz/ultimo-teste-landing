@@ -7,8 +7,7 @@
 <meta name="description" content="300 questões inéditas no estilo ENEM com gabarito comentado. PDF para baixar e imprimir. Acesso imediato.">
 <meta name="robots" content="index, follow">
 
-<!-- META PIXEL AQUI -->
-<!-- Cole abaixo o código base do Pixel do Meta deste produto. Ele já vem com o
+<!-- O código do Pixel do Meta está instalado no fim deste <head>, com o
      PageView. O evento InitiateCheckout é disparado no clique de qualquer CTA
      pela função no rodapé desta página. -->
 
@@ -224,6 +223,23 @@ details > p{padding-bottom:18px;font-size:16.5px;line-height:1.6;color:var(--cor
   .numeros b{flex-basis:92px;font-size:44px}
 }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1081739550896068');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1081739550896068&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -541,7 +557,7 @@ details > p{padding-bottom:18px;font-size:16.5px;line-height:1.6;color:var(--cor
 // Dispara o InitiateCheckout no Pixel (se houver) e segue para o checkout.
 // O valor fica aqui só para a mensuração do anúncio — não aparece na página.
 function irParaCheckout() {
-  if (typeof fbq === "function") { fbq("track", "InitiateCheckout", {value: 27, currency: "BRL"}); }
+  if (typeof fbq !== 'undefined') { fbq('track', 'InitiateCheckout', {value: 27, currency: 'BRL'}); }
   return true;
 }
 </script>
