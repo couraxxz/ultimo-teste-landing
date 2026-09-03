@@ -104,6 +104,54 @@ h2{
 .selo{font-size:13.5px;color:var(--suave);text-align:center;margin:11px 0 0;line-height:1.5}
 .bloco-cta{margin-top:32px}
 
+/* CTA secundário da primeira dobra: contorno em vez de fundo cheio, para não
+   competir com o botão principal nem repetir o mesmo peso três vezes. */
+.cta-topo{margin-top:26px}
+.cta-leve{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:11px 24px;border-radius:4px;
+  background:#fff;color:var(--vermelho);border:1.5px solid var(--vermelho);
+  font-size:15.5px;font-weight:700;letter-spacing:.2px;text-decoration:none;
+}
+.cta-leve:active{background:#fbf2f3}
+
+/* ---------- cartão de oferta ---------- */
+.oferta{border:1px solid var(--borda);border-radius:6px;padding:26px 22px}
+.oferta h2{margin-bottom:18px}
+ul.inclui{list-style:none;margin:0}
+ul.inclui li{position:relative;padding:0 0 12px 26px;font-size:16.5px;line-height:1.5}
+ul.inclui li:last-child{padding-bottom:0}
+ul.inclui li::before{
+  content:"\2713";position:absolute;left:0;top:0;
+  color:var(--vermelho);font-size:15px;font-weight:700;line-height:1.6;
+}
+.preco{border-top:1px solid var(--filete);margin-top:22px;padding-top:20px}
+.preco .valor{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:40px;font-weight:700;line-height:1;color:var(--tinta);
+}
+.preco .cond{font-size:15px;color:var(--suave);margin-top:7px}
+.oferta .cta{margin-top:22px}
+
+/* ---------- barra fixa do celular ----------
+   Só existe abaixo de 768px e só aparece depois de ~600px de rolagem. O
+   padding-bottom no body reserva a altura dela, para nunca cobrir o rodapé. */
+.barra-fixa{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;
+  background:var(--vermelho);border-top:1px solid var(--vermelho-fundo);
+  transform:translateY(100%);transition:transform .22s ease-out;
+}
+.barra-fixa.aparece{transform:translateY(0)}
+.barra-fixa a{
+  display:flex;align-items:center;justify-content:center;
+  min-height:56px;padding:10px 16px;color:#fff;text-decoration:none;
+  text-align:center;font-size:16px;font-weight:700;letter-spacing:.2px;
+}
+@media (max-width:767px){
+  .barra-fixa{display:block}
+  body{padding-bottom:64px}   /* 57px da barra + uma folga */
+}
+
 /* ---------- foto editorial ----------
    A foto e conteudo, nao fundo: entra no fluxo, com legenda embaixo.
    width/height no <img> fixam a proporcao 3:2, entao a caixa nao pula quando a
@@ -259,6 +307,10 @@ src="https://www.facebook.com/tr?id=1081739550896068&ev=PageView&noscript=1"
     <h1>Chegue no dia da prova sabendo exatamente onde você acerta — e onde ainda erra.</h1>
     <p class="sub">Restam poucos dias para o ENEM. Este é o material que te mostra, questão por
       questão, o que ainda dá tempo de corrigir.</p>
+
+    <div class="cta-topo">
+      <a class="cta-leve" href="https://pay.kirvano.com/2ddcd2c6-876e-4b86-93ca-0d226b87f036" onclick="irParaCheckout()">Ver o caderno completo</a>
+    </div>
     <!-- FOTO 1 — primeira dobra, por isso sem loading="lazy".
          Arquivo esperado: img/estudo-papel.jpg (1200x800, JPG). Enquanto ele
          nao existir, aparece um bloco cinza na proporcao certa. -->
@@ -420,6 +472,32 @@ src="https://www.facebook.com/tr?id=1081739550896068&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- ===================== CARTÃO DE OFERTA ===================== -->
+<section class="oferta-secao">
+  <div class="wrap">
+    <div class="oferta">
+      <span class="chapeu">A oferta</span>
+      <h2>O que você leva</h2>
+      <ul class="inclui">
+        <li>300 questões inéditas e autorais</li>
+        <li>75 questões de cada área</li>
+        <li>Gabarito comentado em todas</li>
+        <li>Caderno de 140 páginas em PDF</li>
+      </ul>
+
+      <div class="preco">
+        <div class="valor">R$ 37</div>
+        <div class="cond">à vista</div>
+      </div>
+
+      <a class="cta" href="https://pay.kirvano.com/2ddcd2c6-876e-4b86-93ca-0d226b87f036" onclick="irParaCheckout()">
+        QUERO O ÚLTIMO TESTE
+      </a>
+      <p class="selo">Pix aprovado na hora &middot; acesso imediato</p>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== POR QUE FUNCIONA ===================== -->
 <section class="metodo">
   <div class="wrap">
@@ -553,6 +631,11 @@ src="https://www.facebook.com/tr?id=1081739550896068&ev=PageView&noscript=1"
   </div>
 </footer>
 
+<!-- Barra fixa do celular. Fica fora das seções, colada no fim do body. -->
+<div class="barra-fixa" id="barraFixa">
+  <a href="https://pay.kirvano.com/2ddcd2c6-876e-4b86-93ca-0d226b87f036" onclick="irParaCheckout()">Quero as 300 questões &mdash; R$ 37</a>
+</div>
+
 <script>
 // Dispara o InitiateCheckout no Pixel (se houver) e segue para o checkout.
 // O valor fica aqui só para a mensuração do anúncio — não aparece na página.
@@ -560,6 +643,22 @@ function irParaCheckout() {
   if (typeof fbq !== 'undefined') { fbq('track', 'InitiateCheckout', {value: 37, currency: 'BRL'}); }
   return true;
 }
+
+// Mostra a barra fixa depois de ~600px de rolagem. O CSS já a esconde acima de
+// 767px, então aqui não há checagem de largura: quem manda no "se aparece" é a
+// media query, e este trecho só manda no "quando".
+(function () {
+  var barra = document.getElementById('barraFixa');
+  if (!barra) { return; }
+  var LIMITE = 600;
+  var visivel = false;
+  function avaliar() {
+    var deve = (window.pageYOffset || document.documentElement.scrollTop) > LIMITE;
+    if (deve !== visivel) { visivel = deve; barra.classList.toggle('aparece', deve); }
+  }
+  window.addEventListener('scroll', avaliar, { passive: true });
+  avaliar();  // a página pode abrir já rolada, num retorno do navegador
+})();
 </script>
 </body>
 </html>
