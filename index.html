@@ -8,8 +8,8 @@
 <meta name="robots" content="index, follow">
 
 <!-- O código do Pixel do Meta está instalado no fim deste <head>, com o
-     PageView. O evento InitiateCheckout é disparado no clique de qualquer CTA
-     pela função no rodapé desta página. -->
+     PageView. O evento ViewContent é disparado no clique de qualquer CTA
+     pela função no rodapé desta página, no máximo uma vez por carregamento. -->
 
 <style>
 /* ============================================================
@@ -614,7 +614,7 @@ src="https://www.facebook.com/tr?id=1081739550896068&ev=PageView&noscript=1"
     <p style="margin-bottom:26px"><strong>300 questões. Gabarito comentado.
       Acesso imediato.</strong></p>
 
-    <!-- evento InitiateCheckout no clique do CTA -->
+    <!-- evento ViewContent no clique do CTA -->
     <a class="cta" href="https://pay.kirvano.com/2ddcd2c6-876e-4b86-93ca-0d226b87f036" onclick="irParaCheckout()">
       COMEÇAR MEU ÚLTIMO TESTE AGORA
     </a>
@@ -637,10 +637,16 @@ src="https://www.facebook.com/tr?id=1081739550896068&ev=PageView&noscript=1"
 </div>
 
 <script>
-// Dispara o InitiateCheckout no Pixel (se houver) e segue para o checkout.
+// Dispara o ViewContent no Pixel (se houver) e segue para o checkout.
 // O valor fica aqui só para a mensuração do anúncio — não aparece na página.
+// A guarda vale por carregamento de página: os seis botões chamam a mesma
+// função, e quem clica em dois deles não deve gerar dois eventos.
+var viewContentEnviado = false;
 function irParaCheckout() {
-  if (typeof fbq !== 'undefined') { fbq('track', 'InitiateCheckout', {value: 37, currency: 'BRL'}); }
+  if (!viewContentEnviado && typeof fbq !== 'undefined') {
+    viewContentEnviado = true;
+    fbq('track', 'ViewContent', {value: 37, currency: 'BRL'});
+  }
   return true;
 }
 
