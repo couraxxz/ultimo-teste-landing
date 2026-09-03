@@ -115,23 +115,28 @@ h2{
 }
 .cta-leve:active{background:#fbf2f3}
 
-/* ---------- cartão de oferta ---------- */
-.oferta{border:1px solid var(--borda);border-radius:6px;padding:26px 22px}
-.oferta h2{margin-bottom:18px}
-ul.inclui{list-style:none;margin:0}
-ul.inclui li{position:relative;padding:0 0 12px 26px;font-size:16.5px;line-height:1.5}
-ul.inclui li:last-child{padding-bottom:0}
-ul.inclui li::before{
-  content:"\2713";position:absolute;left:0;top:0;
-  color:var(--vermelho);font-size:15px;font-weight:700;line-height:1.6;
+/* ---------- ficha técnica ----------
+   Sem quadro: as regras horizontais que abrem e fecham o bloco são as mesmas
+   que separam as seções da página (o border-top de section, mais o traço).
+   O preço é a última linha da própria ficha, alinhado ao rótulo como qualquer
+   outra especificação — não um bloco solto. */
+.ficha table{width:100%;border-collapse:collapse;margin:4px 0 24px}
+.ficha td{padding:11px 0;border-bottom:1px solid var(--filete);vertical-align:baseline}
+.ficha tr:last-child td{border-bottom:none;padding-top:15px}
+.ficha td.rotulo{
+  width:36%;padding-right:14px;color:var(--suave);
+  font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
 }
-.preco{border-top:1px solid var(--filete);margin-top:22px;padding-top:20px}
-.preco .valor{
+.ficha td.valor{font-size:16.5px;color:var(--tinta)}
+.ficha .preco{
   font-family:Georgia,"Times New Roman",serif;
-  font-size:40px;font-weight:700;line-height:1;color:var(--tinta);
+  font-size:36px;font-weight:700;line-height:1;color:var(--tinta);
 }
-.preco .cond{font-size:15px;color:var(--suave);margin-top:7px}
-.oferta .cta{margin-top:22px}
+.ficha .cond{font-size:14.5px;color:var(--suave);margin-left:9px}
+@media (min-width:700px){
+  .ficha td.rotulo{width:26%}
+  .ficha .preco{font-size:42px}
+}
 
 /* ---------- barra fixa do celular ----------
    Só existe abaixo de 768px e só aparece depois de ~600px de rolagem. O
@@ -327,6 +332,27 @@ src="https://www.facebook.com/tr?id=1081739550896068&ev=PageView&noscript=1"
   </div>
 </div>
 
+<!-- ===================== FICHA TÉCNICA ===================== -->
+<section class="ficha">
+  <div class="wrap">
+    <span class="chapeu">Ficha técnica</span>
+    <h2>O que você leva</h2>
+    <table>
+      <tr><td class="rotulo">Questões</td><td class="valor">300 inéditas e autorais</td></tr>
+      <tr><td class="rotulo">Por área</td><td class="valor">75 de cada uma das quatro</td></tr>
+      <tr><td class="rotulo">Gabarito</td><td class="valor">comentado em todas</td></tr>
+      <tr><td class="rotulo">Formato</td><td class="valor">caderno de 140 páginas em PDF</td></tr>
+      <tr><td class="rotulo">Preço</td>
+          <td class="valor"><span class="preco">R$ 37</span><span class="cond">à vista</span></td></tr>
+    </table>
+
+    <a class="cta" href="https://pay.kirvano.com/2ddcd2c6-876e-4b86-93ca-0d226b87f036" onclick="irParaCheckout()">
+      QUERO O ÚLTIMO TESTE
+    </a>
+    <p class="selo">Pix aprovado na hora &middot; acesso imediato</p>
+  </div>
+</section>
+
 <!-- ===================== A DOR ===================== -->
 <section>
   <div class="wrap">
@@ -468,32 +494,6 @@ src="https://www.facebook.com/tr?id=1081739550896068&ev=PageView&noscript=1"
         COMEÇAR MEU ÚLTIMO TESTE AGORA
       </a>
       <p class="selo">Acesso imediato após o pagamento &middot; Pix ou cartão</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CARTÃO DE OFERTA ===================== -->
-<section class="oferta-secao">
-  <div class="wrap">
-    <div class="oferta">
-      <span class="chapeu">A oferta</span>
-      <h2>O que você leva</h2>
-      <ul class="inclui">
-        <li>300 questões inéditas e autorais</li>
-        <li>75 questões de cada área</li>
-        <li>Gabarito comentado em todas</li>
-        <li>Caderno de 140 páginas em PDF</li>
-      </ul>
-
-      <div class="preco">
-        <div class="valor">R$ 37</div>
-        <div class="cond">à vista</div>
-      </div>
-
-      <a class="cta" href="https://pay.kirvano.com/2ddcd2c6-876e-4b86-93ca-0d226b87f036" onclick="irParaCheckout()">
-        QUERO O ÚLTIMO TESTE
-      </a>
-      <p class="selo">Pix aprovado na hora &middot; acesso imediato</p>
     </div>
   </div>
 </section>
